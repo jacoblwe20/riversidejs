@@ -47,7 +47,9 @@
 
       h3 Upcoming Meetups
 
-      p.upcoming-meetups
+      div.upcoming-meetups
+        -for event in events
+          include events/single
 
       h2 Where
 

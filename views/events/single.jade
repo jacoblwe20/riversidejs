@@ -1,0 +1,6 @@
+div.well
+	div.event-data
+		span.time(data-time=event.time)
+		br
+		span.address= event.venue.address_1 + '\n' + event.venue.city + ', ' + event.venue.state + ' ' + event.venue.zip
+		a.meetup-link(href=event.event_url) More Details
