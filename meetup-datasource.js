@@ -29,7 +29,15 @@ Meetup.prototype._request = function(path, callback){
             console.log(error);
             callback(error);
         }else if(response.statusCode == 200){
-            callback(JSON.parse(body).results);
+            var payload,
+                json = JSON.parse(body);
+
+            if( json.results ){
+                callback(json.results);
+                return true;
+            }
+
+            callback( json );
         }
 
     });
@@ -101,6 +109,26 @@ Meetup.prototype.getEvents = function(number, callback){
         }
 
         callback(events);
+
+    });
+    
+}
+
+/* 
+ * @method  getEvents               - get events for meetup
+ * @param   number      Interger    - number of events to get
+ * @param   callback    Function    - callback function
+ */
+
+Meetup.prototype.getEvent = function(id, callback){
+    var path = '/2/event/',
+        that = this;
+    path += id;
+    path += '?key=' + this.getKey();
+
+    this._request(path, function( _event ){
+
+        callback( _event );
 
     });
     

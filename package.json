@@ -13,7 +13,7 @@
     "time"              : "latest",
     "coffee-script"     : "latest",
     "connect-assets"    : "2.x.x",
-    "express"           : "2.5.9",
+    "express"           : "3.0.0",
     "gravatar"          : "latest",
     "jade"              : "latest",
     "stylus"            : "latest",
