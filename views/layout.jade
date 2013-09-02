@@ -11,9 +11,10 @@ head
   
   body(data-spy='scroll', data-target='.subnav', data-offset='50')
     - if (typeof(header) != 'undefined')
-      != header
-    #main.container!= body
-    != partial('partials/_gauges')
+     
+    #main.container 
+      
+      block content
 
     // Zee Javascriptz
     script(id='member-template', type='text/html')

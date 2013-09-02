@@ -36,10 +36,17 @@ job = new cron({
 });
 job.start();
 
+app.layout = "layout.jade";
+
 app.configure ->
   app.set 'views', __dirname + "/views"
-  app.use express.bodyParser()
+  app.set("view options", { layout: "layout.jade" });
+  app.set('view engine', 'jade');
+  app.use express.bodyParser();
+  app.use express.logger('dev');
+  app.use(express.bodyParser());
   app.use express.static(__dirname + "/public")
+  app.use app.router;
   app.use require('connect-assets')()
   app.use ( req, res, next ) ->
     res.setHeader("Access-Control-Allow-Origin", "*");
